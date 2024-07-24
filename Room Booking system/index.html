@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Room Booking</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="circle1"></div>
+    <div class="circle2"></div>
+    <div class="circle3"></div>
+
+    <header>
+        <h1>Room Booking System</h1>
+    </header>
+    
+    <div class="container">
+
+
+        <div class="left">
+            <h2>Available Rooms</h2>
+            <p>Conference Rooms: <span id="conference-rooms">10</span></p>
+            <p>Meeting Rooms: <span id="meeting-rooms">10</span></p>
+            <p>Board Rooms: <span id="board-rooms">10</span></p>
+        </div>
+        <div class="right">
+            <h2>Book a Room</h2>
+            <form id="booking-form">
+                <label for="room-type">Room Type:</label>
+                <select id="room-type" name="room-type">
+                    <option value="conference">Conference Room</option>
+                    <option value="meeting">Meeting Room</option>
+                    <option value="board">Board Room</option>
+                </select>
+
+                <label for="date">Date:</label>
+                <input type="date" id="date" name="date" required>
+
+                <label for="start-time">Start Time:</label>
+                <input type="time" id="start-time" name="start-time" required>
+
+                <label for="end-time">End Time:</label>
+                <input type="time" id="end-time" name="end-time" required>
+
+                <label for="meeting-title">Meeting Title:</label>
+                <input type="text" id="meeting-title" name="meeting-title" placeholder="Title" required>
+
+                <button class="btn" type="submit">Book Room</button>
+            </form>
+        </div>
+    </div>
+    <div class="booking-details">
+        <h2>Booking Details</h2>
+        <table id="booking-table">
+            <thead>
+                <tr>
+                    <th>Room Type</th>
+                    <th>Date</th>
+                    <th>Meeting Title</th>
+                    <th>Start Time</th>
+                    <th>End Time</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Booking details will be appended here -->
+            </tbody>
+        </table>
+    </div>
+    <script src="/main.js"></script>
+</body>
+</html>
