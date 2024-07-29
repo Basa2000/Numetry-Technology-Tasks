@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Message Sender | Basavaraj</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <div class="circle1"></div>
+    <div class="circle2"></div>
+
+
+    <div class="wrapper">
+        <div class="card-wrapper">
+
+
+            <div class="title">
+                <h1>message sender</h1>
+            </div>
+
+            <form action="" id="smsForm" class="form">
+
+
+                <div class="form-control">
+                    <label for="to">Contact Number</label>
+                    <input type="text" placeholder="Phone" name="to" id="to" autocomplete="off" required>
+                </div>
+
+
+
+                <div class="form-control">
+                    <label for="message">Message</label>
+                    <textarea placeholder="Enter Your message" id="message" name="message" required
+                        autocomplete="off"></textarea>
+                </div>
+
+                <button type="submit" class="btn">Send</button>
+            </form>
+
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('smsForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            const to = document.getElementById('to').value;
+            const message = document.getElementById('message').value;
+
+            fetch('http://localhost:3000/send-sms', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ to, message }),
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        alert('Message sent successfully!');
+                    } else {
+                        alert('Error sending message: ' + data.error);
+                    }
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                });
+        });
+    </script>
+    
+</body>
+
+</html>
